@@ -1,8 +1,8 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import Root from '@/layouts/root';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
+
 import Auth from '@/layouts/auth';
-import SignInPage from '@/pages/auth/sign-in';
-import SignUpPage from '@/pages/auth/sign-up';
+import Root from '@/layouts/root';
+import { SignInPage, SignUpPage } from '@/pages/auth';
 import ErrorPage from '@/pages/error-page';
 import HomePage from '@/pages/home';
 

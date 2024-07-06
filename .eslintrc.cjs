@@ -16,8 +16,48 @@ module.exports = {
     }
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'import', 'prettier'],
+  plugins: ['react-refresh', 'prettier'],
   rules: {
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        allowSeparatedGroups: true,
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['sibling', 'parent'],
+          'index',
+          'unknown',
+        ],
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: '@src/**',
+            group: 'internal',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['internal', 'react'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'jsx-quotes': ["error", "prefer-double"],
     'react-refresh/only-export-components': [
