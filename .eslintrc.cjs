@@ -16,8 +16,9 @@ module.exports = {
     }
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'prettier'],
+  plugins: ['react-refresh', '@stylistic/js', 'prettier', '@tanstack/query'],
   rules: {
+    "@tanstack/query/exhaustive-deps": "error",
     'sort-imports': [
       'error',
       {
@@ -60,9 +61,15 @@ module.exports = {
     ],
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     'jsx-quotes': ["error", "prefer-double"],
+    "@typescript-eslint/consistent-type-imports": [
+      'error',
+      {
+        prefer: 'type-imports'
+      }
+    ],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
   },
-};
+}
