@@ -18,7 +18,7 @@ import { useCreateUserAccount } from '@/lib/tanstackquery/queries';
 
 import { defaultValues, formSchema } from './constants';
 
-export default function SignUp() {
+export function SignUpPage() {
   const navigate = useNavigate();
 
   const form = useForm<z.infer<typeof formSchema>>({
