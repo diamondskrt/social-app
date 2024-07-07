@@ -22,7 +22,7 @@ import { useUserStore } from '@/store';
 
 import { defaultValues, formSchema } from './constants';
 
-export default function SignIn() {
+export function SignInPage() {
   const navigate = useNavigate();
   const setUser = useUserStore((state) => state.setUser);
 

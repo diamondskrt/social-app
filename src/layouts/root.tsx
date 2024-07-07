@@ -1,13 +1,18 @@
 import { Outlet } from 'react-router-dom';
 
-import { Toaster } from '@/components/ui/sonner';
+import { Footer } from '@/components/shared/footer';
+import { Header } from '@/components/shared/header';
+import { Sidebar } from '@/components/shared/sidebar';
 
-export default function Root() {
+export function Root() {
   return (
-    <>
-      <div className="header">Header</div>
-      <Outlet />
-      <Toaster position="top-right" richColors />
-    </>
+    <div className="md:flex h-screen">
+      <Header />
+      <Sidebar />
+      <main className="flex flex-1 h-full px-6">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
   );
 }

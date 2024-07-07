@@ -1,3 +1,5 @@
+import type dynamicIconImports from 'lucide-react/dynamicIconImports';
+
 export interface NewUser {
   username: string;
   email: string;
@@ -9,4 +11,10 @@ export interface User {
   email: string;
   imageUrl: URL;
   username: string;
+}
+
+export interface Link {
+  label: string;
+  route: string;
+  icon: keyof typeof dynamicIconImports;
 }
