@@ -56,4 +56,19 @@
   body {
     @apply bg-background text-foreground;
   }
+  h1 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h5 {
+    @apply text-xl;
+  }
+  .file-uploader {
+    @apply flex-center flex-col w-full h-64 border border-dashed border-gray-300 dark:border-gray-600 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800  dark:hover:border-gray-500;
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
 }

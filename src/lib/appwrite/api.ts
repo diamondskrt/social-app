@@ -1,8 +1,8 @@
-import { ID, Query } from 'appwrite';
+import { ID, ImageGravity, Query } from 'appwrite';
 
-import type { NewUser, User } from '@/models';
+import type { NewPost, NewUser, Post, User } from '@/models';
 
-import { account, appwriteConfig, avatars, databases } from './config';
+import { account, appwriteConfig, avatars, databases, storage } from './config';
 
 export const saveUserToDB = async (user: User) => {
   try {
@@ -92,3 +92,112 @@ export const signOutAccount = async () => {
     throw new Error((error as Error).message);
   }
 };
+
+export const uploadFile = async (file: File) => {
+  try {
+    const uploadedFile = await storage.createFile(
+      appwriteConfig.storageId,
+      ID.unique(),
+      file
+    );
+
+    return uploadedFile;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+export const getFilePreview = async (fileId: string) => {
+  try {
+    const fileUrl = await storage.getFilePreview(
+      appwriteConfig.storageId,
+      fileId,
+      2000,
+      2000,
+      ImageGravity.Top,
+      100
+    );
+
+    return fileUrl;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+export const createPost = async (post: NewPost) => {
+  try {
+    const uploadedFile = await uploadFile(post.files[0]);
+
+    const fileUrl = await getFilePreview(uploadedFile.$id);
+
+    const newPost = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.postsCollectionId,
+      ID.unique(),
+      {
+        creator: post.userId,
+        caption: post.caption,
+        imageUrl: fileUrl,
+        imageId: uploadedFile.$id,
+        location: post.location,
+        tags: post.tags?.map(({ value }) => value),
+      }
+    );
+
+    return newPost;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+export const deleteFile = async (fileId: string) => {
+  try {
+    await storage.deleteFile(appwriteConfig.storageId, fileId);
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
+const updatePostDocument = async (
+  post: Post,
+  imgData?: Pick<Post, 'imageUrl' | 'imageId'>
+) => {
+  return await databases.updateDocument(
+    appwriteConfig.databaseId,
+    appwriteConfig.postsCollectionId,
+    post.postId,
+    {
+      caption: post.caption,
+      imageUrl: imgData?.imageUrl,
+      imageId: imgData?.imageId,
+      location: post.location,
+      tags: post.tags?.map(({ value }) => value),
+    }
+  );
+};
+
+export async function updatePost(post: Post) {
+  try {
+    const hasFileToUpdate = post.files.length;
+
+    if (hasFileToUpdate) {
+      const uploadedFile = await uploadFile(post.files[0]);
+      const imageUrl = await getFilePreview(uploadedFile.$id);
+
+      const updatedPost = await updatePostDocument(post, {
+        imageUrl,
+        imageId: uploadedFile.$id,
+      });
+
+      await deleteFile(post.imageId);
+
+      return updatedPost;
+    } else {
+      const updatedPost = await updatePostDocument(post);
+
+      return updatedPost;
+    }
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+}

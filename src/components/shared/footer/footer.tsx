@@ -15,8 +15,10 @@ export function Footer() {
               to={link.route}
               className={({ isActive }) =>
                 cn(
-                  isActive && 'bg-primary text-white',
-                  'flex items-center gap-3 rounded-[12px] hover:bg-secondary p-3'
+                  isActive
+                    ? 'bg-primary text-white hover:opacity-80'
+                    : 'hover:bg-secondary',
+                  'flex items-center gap-3 rounded-[12px] p-3'
                 )
               }
             >
