@@ -18,3 +18,31 @@ export interface Link {
   route: string;
   icon: keyof typeof dynamicIconImports;
 }
+
+export enum PostFormAction {
+  CREATE = 'CREATE',
+  UPDATE = 'UPDATE',
+}
+
+export interface Tag {
+  id: string;
+  value: string;
+}
+
+export interface NewPost {
+  userId: string;
+  caption: string;
+  files: FileList;
+  location?: string;
+  tags?: Tag[];
+}
+
+export interface Post {
+  postId: string;
+  caption: string;
+  imageId: string;
+  imageUrl: URL;
+  files: FileList;
+  location?: string;
+  tags?: Tag[];
+}

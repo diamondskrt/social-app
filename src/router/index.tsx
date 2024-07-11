@@ -3,6 +3,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { Auth } from '@/layouts/auth';
 import { Root } from '@/layouts/root';
 import { SignInPage, SignUpPage } from '@/pages/auth';
+import { CreatePostPage } from '@/pages/create-post';
 import { ErrorPage } from '@/pages/error-page';
 import { HomePage } from '@/pages/home';
 
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: 'create-post',
+        element: <CreatePostPage />,
       },
     ],
   },

@@ -46,8 +46,10 @@ export function Sidebar() {
                 to={link.route}
                 className={({ isActive }) =>
                   cn(
-                    isActive && 'bg-primary text-white',
-                    'flex items-center gap-3 rounded hover:bg-secondary p-2'
+                    isActive
+                      ? 'bg-primary text-white hover:opacity-80'
+                      : 'hover:bg-secondary',
+                    'flex items-center gap-3 rounded p-2'
                   )
                 }
               >

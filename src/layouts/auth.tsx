@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 export function Auth() {
   return (
     <div className="flex">
-      <section className="flex flex-1 justify-center items-center flex-col py-10">
+      <section className="flex-center flex-1 flex-col py-10">
         <Outlet />
       </section>
 

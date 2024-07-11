@@ -9,7 +9,7 @@ export function Root() {
     <div className="md:flex h-screen">
       <Header />
       <Sidebar />
-      <main className="flex flex-1 h-full px-6">
+      <main className="flex flex-1 h-full px-12 py-6">
         <Outlet />
       </main>
       <Footer />
