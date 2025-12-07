@@ -4,6 +4,8 @@ import { RouterLink } from 'vue-router'
 import { Logo, ThemeSwitcher } from '~/shared/ui'
 
 import { useHideOnScroll } from '../composables'
+import { navLinks } from '../config'
+import HeaderProfile from './HeaderProfile.vue'
 
 const { isHidden } = useHideOnScroll()
 </script>
@@ -15,14 +17,23 @@ const { isHidden } = useHideOnScroll()
       isHidden ? '-translate-y-full' : 'translate-y-0',
     ]"
   >
-    <RouterLink to="/">
-      <Logo />
-    </RouterLink>
-    <nav class="space-x-4">
-      <RouterLink to="/">For you</RouterLink>
-      <RouterLink to="/following">Following</RouterLink>
-      <RouterLink to="/ghost-posts">Ghost posts</RouterLink>
+    <div class="flex w-1/3">
+      <RouterLink to="/">
+        <Logo />
+      </RouterLink>
+    </div>
+    <nav class="flex w-1/3 justify-center">
+      <div class="space-x-4">
+        <RouterLink v-for="link in navLinks" :key="link.href" :to="link.href">
+          {{ link.name }}
+        </RouterLink>
+      </div>
     </nav>
-    <div>Profile</div>
+    <div class="flex w-1/3 items-center justify-end">
+      <div class="flex items-center gap-4">
+        <ThemeSwitcher />
+        <HeaderProfile />
+      </div>
+    </div>
   </header>
 </template>

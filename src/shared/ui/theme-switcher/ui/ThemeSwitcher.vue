@@ -9,33 +9,33 @@ const { store, isDark, isLight, isAuto, setStore } = useTheme()
 </script>
 
 <template>
-  <div class="inline-flex gap-1 rounded-full border px-1 py-0.5">
+  <div class="inline-flex gap-1 rounded-full border p-1">
     <Button
       @click="setStore('dark')"
       variant="ghost"
-      size="icon-sm"
+      size="icon-xs"
       class="rounded-full"
       :class="{ 'bg-accent': isDark }"
     >
-      <Icon icon="radix-icons:moon" class="h-[1.2rem] w-[1.2rem]" />
+      <Icon icon="radix-icons:moon" class="size-4" />
     </Button>
     <Button
       @click="store = 'auto'"
       variant="ghost"
-      size="icon-sm"
+      size="icon-xs"
       class="rounded-full"
       :class="{ 'bg-accent': isAuto }"
     >
-      <Icon icon="radix-icons:desktop" class="h-[1.2rem] w-[1.2rem]" />
+      <Icon icon="radix-icons:desktop" class="size-4" />
     </Button>
     <Button
       @click="store = 'light'"
       variant="ghost"
-      size="icon-sm"
+      size="icon-xs"
       class="rounded-full"
       :class="{ 'bg-accent': isLight }"
     >
-      <Icon icon="radix-icons:sun" class="h-[1.2rem] w-[1.2rem]" />
+      <Icon icon="radix-icons:sun" class="size-4" />
     </Button>
   </div>
 </template>

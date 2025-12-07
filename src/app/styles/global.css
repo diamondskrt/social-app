@@ -122,12 +122,12 @@
     cursor: pointer;
   }
 
-  /* Z-index priority */
+  /* z-index priority */
   .z-low {
     @apply z-10;
   }
 
-  /* Typography */
+  /* typography */
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight text-balance;
   }
