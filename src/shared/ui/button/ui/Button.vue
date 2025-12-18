@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Primitive } from 'reka-ui'
 
-import { cn } from '~/shared/lib/utils'
+import { cn } from '~/shared/lib'
 
 import { buttonVariants } from '../config'
 import type { Props } from '../model'

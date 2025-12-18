@@ -1,1 +1,1 @@
-export { DefaultLayout } from './ui'
+export { DefaultLayout, AuthLayout } from './ui'

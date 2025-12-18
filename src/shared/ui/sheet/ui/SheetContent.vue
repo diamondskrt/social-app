@@ -10,7 +10,7 @@ import {
 } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 
-import { cn } from '~/shared/lib/utils'
+import { cn } from '~/shared/lib'
 
 import SheetOverlay from './SheetOverlay.vue'
 

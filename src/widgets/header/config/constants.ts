@@ -7,7 +7,6 @@ const navLinks = [
 const userLinks = [
   { name: 'Profile', href: '/' },
   { name: 'Settings', href: '/' },
-  { name: 'Logout', href: '/' },
 ]
 
 export { navLinks, userLinks }
