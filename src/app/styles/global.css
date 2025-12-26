@@ -122,12 +122,12 @@
     cursor: pointer;
   }
 
-  /* Z-index priority */
+  /* z-index priority */
   .z-low {
     @apply z-10;
   }
 
-  /* Typography */
+  /* typography */
   h1 {
     @apply scroll-m-20 text-4xl font-extrabold tracking-tight text-balance;
   }
@@ -141,13 +141,16 @@
     @apply scroll-m-20 text-xl font-semibold tracking-tight;
   }
   p {
-     @apply leading-7 not-first:mt-6;
+     @apply leading-7 not-last:mb-6;
+  }
+  a, .link {
+    @apply cursor-pointer underline-offset-4 text-primary hover:text-primary/80;
   }
   blockquote {
     @apply mt-6 border-l-2 pl-6 italic;
   }
   small {
-    @apply text-sm font-medium leading-none;
+    @apply text-sm leading-none;
   }
   code {
     @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;

@@ -5,7 +5,7 @@ import { DefaultLayout } from '~/widgets/layouts'
 
 <template>
   <DefaultLayout>
-    <section>
+    <section class="p-4">
       <Typography variant="h4">Home Page</Typography>
     </section>
   </DefaultLayout>
